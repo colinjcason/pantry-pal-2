@@ -12,6 +12,7 @@ const shoppingListDB = ref(database, 'shoppingList')
 const addButton = document.getElementById('add-button')
 const inputText = document.getElementById('input-field')
 const shoppingList = document.getElementById('shopping-list')
+const clearListButton = document.getElementById('clear-list-button')
 
 addButton.addEventListener('click', function() {
   if(inputText.value == '') {
@@ -23,6 +24,10 @@ addButton.addEventListener('click', function() {
 
     clearInput()
   }
+})
+
+clearListButton.addEventListener('click', function() {
+  remove(shoppingListDB)
 })
 
 onValue(shoppingListDB, function(snapshot) {
@@ -57,7 +62,8 @@ function addListItem(item) {
 
   newEl.addEventListener('click', function() {
     let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
-    remove(exactLocationOfItemInDB)
+    newEl.style.textDecoration = 'line-through'
+    // remove(exactLocationOfItemInDB)
   })
 
   shoppingList.append(newEl)
