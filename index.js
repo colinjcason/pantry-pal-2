@@ -14,11 +14,15 @@ const inputText = document.getElementById('input-field')
 const shoppingList = document.getElementById('shopping-list')
 
 addButton.addEventListener('click', function() {
-  let inputValue = inputText.value
+  if(inputText.value == '') {
+    window.confirm('Add something!')
+  } else {
+    let inputValue = inputText.value
 
-  push(shoppingListDB, inputValue)
+    push(shoppingListDB, inputValue)
 
-  clearInput()
+    clearInput()
+  }
 })
 
 onValue(shoppingListDB, function(snapshot) {
