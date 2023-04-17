@@ -65,7 +65,6 @@ function addListItem(item) {
     newEl.style.textDecoration = 'line-through'
     // remove(exactLocationOfItemInDB)
   })
-
   shoppingList.append(newEl)
 }
 
